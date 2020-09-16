@@ -158,3 +158,70 @@ Fact about service : -
 Remember Service is not a UI
 
 That is why service extends ContextWrapper not ContextThemeWrapper
+
+
+If a app has Service and service 2 you can run only one instance for each of those services. 
+A service is started only we can do bind and unbind  any no of times .
+
+Binding and unbinding does not create multiple instance of services .
+
+Each Services gets own its instance of ContextImpl - per instance in a application 
+
+
+
+Total no of Context in the application is 
+
+         Total no of Context = #Total no of Activities + #Total no of Services + 1 Application Context 
+         
+Why does Activity Context Leak Memory ?
+
+
+someRandomSampleClass  = SomeRandomSampleClass.getSomeRandomSampleClassInstance(this); - causes memory Leak 
+
+  1. in protrait mode - one activity coontext will be there 
+  2. In landscape mode - two activity context will be there 
+  3. again protrait mode - three  context 
+  etc..
+  Three activity context retained  beyond on the lifecycle  3 are activity context is leaked one is 
+  visible to user that why we go for getApplicationContext()
+  
+  
+  
+  So Can i use Application everywhere instead of Activity.this ?
+  Answer : Is No 
+  
+  Where to use Which context and what are the other precautions ways to avoid Context/Memory Leak 
+  
+  
+  
+                                   Application                    Activity                     Services                    ContentProvider                  BroadCast Receiver
+    
+   Starting An Activity            Not Recommended                  Yes                         Not Recommended              Not Recommended                Not Recommended
+       
+   Layout Inflation                Not Recommended                  Yes                         Not Recommended              Not Recommended                 Not Recommended 
+    
+   Trigger Dialog                     No                            Yes                            No                            No                                No
+   
+   Starting Services                  Yes                           Yes                           Yes                            Yes                               Yes
+   
+   Service Binding                    Yes                           Yes                           Yes                            Yes                               No
+   
+   Send Broadcast                     Yes                           Yes                           Yes                            Yes                               Yes
+   
+   Register Broadcast                 Yes                           Yes                           Yes                            Yes                            Not Recommended 
+   
+   Load Resources                     Yes                           Yes                           Yes                            Yes                               Yes
+      
+  
+  
+  Using Flag 
+  
+  FLAG_ACTIVITY_NEW_TASK 
+  
+  
+  Calling Activity in Service - not recommender 
+  
+  Trigger a service -> Notification -> Activity 
+  
+  Layout inflation in Service - Actually it doesn't make any sense to do any Ui Related work from service 
+  Use Activity for that 
