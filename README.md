@@ -33,11 +33,11 @@ this will consume all memory pretty soon, app will run out of out of memory erro
 The app performance degrades 
 App Crashes 
 
-#How to identify memory leaks 
+# How to identify memory leaks 
 
-##Finding the memory leak 
+## Finding the memory leak 
 
-####Use Android Monitor 
+#### Use Android Monitor 
 There are three will be there 
 
 1. we choose memory you could see Initiate GC and Start and Stop Allocation Tracking and Dump Java 
@@ -49,7 +49,7 @@ inbuild hprof
 
 
 
-#To find Memory dump easily use LeakCanary Library to find and traceout memory leaks 
+# To find Memory dump easily use LeakCanary Library to find and traceout memory leaks 
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
@@ -148,9 +148,9 @@ Each Activity gets own its instance of ContextImpl - There are multiple instance
 
 #Fact about service : - 
 
-##Remember Service is not a UI
+## Remember Service is not a UI
 
-##That is why service extends ContextWrapper not ContextThemeWrapper
+## That is why service extends ContextWrapper not ContextThemeWrapper
 
 
 If a app has Service and service 2 you can run only one instance for each of those services. 
@@ -162,7 +162,7 @@ Each Services gets own its instance of ContextImpl - per instance in a applicati
 
 
 
-##Total no of Context in the application is 
+## Total no of Context in the application is 
 
    #### Total no of Context = #Total no of Activities + #Total no of Services + 1 Application Context 
          
