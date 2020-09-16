@@ -188,8 +188,8 @@ someRandomSampleClass  = SomeRandomSampleClass.getSomeRandomSampleClassInstance(
   Where to use Which context and what are the other precautions ways to avoid Context/Memory Leak 
   
   #### Use Recommentations :- 
-           
-            ![image](https://user-images.githubusercontent.com/17023516/93317480-2f5b0d80-f82b-11ea-8a12-f2b38bba1dba.png)
+          
+   ![image](https://user-images.githubusercontent.com/17023516/93317480-2f5b0d80-f82b-11ea-8a12-f2b38bba1dba.png)
   
   
   Using Flag 
