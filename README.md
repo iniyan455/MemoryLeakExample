@@ -1,3 +1,9 @@
+# Memory Leaks in Android 
+Use github materials 
+
+## Types of References in Java
+
+
 Assume that you have static reference  : - 
 
 
@@ -65,21 +71,10 @@ Why is it possible to use Activity in place of Context ?
 getApplicationContext is a subclass of context 
 
 
-Context is a super class and it a abstract class
-                            |
-`                           | 
-                            |
-                 ------------------------------------------------------------------------
-                 |                                                                      |
-     ContextWrapper is a sublcass of context in android                           ContextImpl
-                             |
-                            | 
-     ----------------------------------------------------- ---------------------------------|------------- etc..
-     |                       |                          |                                   |
-   Application            Service                 ContextThemeWrapper                ContextThemeWrapper
-                                                        |                                   |
-                                                     Activity                           Activity 
-                                                     
+##### Context Strucuture Diagram 
+
+![image](https://user-images.githubusercontent.com/17023516/93317311-f15de980-f82a-11ea-998c-d50d3e673b91.png)
+
                                                      
 Can you guess the difference b/w ContextWrapper and ContextThemeWrapper ?
 
@@ -192,26 +187,9 @@ someRandomSampleClass  = SomeRandomSampleClass.getSomeRandomSampleClassInstance(
   
   Where to use Which context and what are the other precautions ways to avoid Context/Memory Leak 
   
-  
-  
-                                   Application                    Activity                     Services                    ContentProvider                  BroadCast Receiver
-    
-   Starting An Activity            Not Recommended                  Yes                         Not Recommended              Not Recommended                Not Recommended
-       
-   Layout Inflation                Not Recommended                  Yes                         Not Recommended              Not Recommended                 Not Recommended 
-    
-   Trigger Dialog                     No                            Yes                            No                            No                                No
-   
-   Starting Services                  Yes                           Yes                           Yes                            Yes                               Yes
-   
-   Service Binding                    Yes                           Yes                           Yes                            Yes                               No
-   
-   Send Broadcast                     Yes                           Yes                           Yes                            Yes                               Yes
-   
-   Register Broadcast                 Yes                           Yes                           Yes                            Yes                            Not Recommended 
-   
-   Load Resources                     Yes                           Yes                           Yes                            Yes                               Yes
-      
+  #### Use Recommentations :- 
+           
+            ![image](https://user-images.githubusercontent.com/17023516/93317480-2f5b0d80-f82b-11ea-8a12-f2b38bba1dba.png)
   
   
   Using Flag 
